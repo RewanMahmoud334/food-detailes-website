@@ -6,9 +6,14 @@ $(".close-icon").click(function(){
     if($("#sideBar").css("left")=="0px"){
         $("#sideBar").animate({left:-sideBarInnerWidth},1000)
         $("#sideBarInner li").animate({top:"100%"},1000)
+        $(".fa-xmark").addClass("d-none")
+        $(".fa-bars").removeClass("d-none")
     }else{
         $("#sideBar").animate({left:"0px"},1000)
         $("#sideBarInner li").animate({top:"0"},1000)
+        $(".fa-xmark").removeClass("d-none")
+        $(".fa-bars").addClass("d-none")
+
     }
      })
 
@@ -77,12 +82,14 @@ $(".close-icon").click(function(){
 
 
        async function getSearchByName(term){
+        $(".row").removeClass("d-none")
         let Api=await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${term}`)
         searchApi=await Api.json()
         displaySearchByName(searchApi.meals)
        }
 
        async function getSearchByLetter(firstLetter){
+        $(".row").removeClass("d-none")
         let Api=await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${firstLetter}`)
         searchLetterApi=await Api.json()
         displaySearchByName(searchLetterApi.meals)
@@ -160,7 +167,7 @@ $(".close-icon").click(function(){
        }
 
 
-    async function displayCategory(arr){
+     function displayCategory(arr){
         $(".row").removeClass("d-none")
         $(".search-input").removeClass("d-flex").addClass("d-none")
         let cartoona=``
@@ -191,7 +198,7 @@ $(".close-icon").click(function(){
 
     }
 
-     async function filterCategory(arr){
+      function filterCategory(arr){
         $(".row").removeClass("d-none")
         $(".search-input").removeClass("d-flex").addClass("d-none")
         let cartoona=``
@@ -215,7 +222,7 @@ $(".close-icon").click(function(){
 
      }
 
-     async function filterArea(arr){
+      function filterArea(arr){
         $(".row").removeClass("d-none")
         $(".search-input").removeClass("d-flex").addClass("d-none")
         let cartoona=``
@@ -240,7 +247,7 @@ $(".close-icon").click(function(){
 
      }
 
-     async function filterIngredient(arr){
+      function filterIngredient(arr){
         $(".row").removeClass("d-none")
         $(".search-input").removeClass("d-flex").addClass("d-none")
         let cartoona=``
@@ -270,7 +277,7 @@ $(".close-icon").click(function(){
 
 
 
-     async function displayArea(arr){
+      function displayArea(arr){
         $(".row").removeClass("d-none")
         $(".search-input").removeClass("d-flex").addClass("d-none")
         let cartoona=``
@@ -295,7 +302,7 @@ $(".close-icon").click(function(){
             })
      }
 
-     async function displayIngredient(arr){
+      function displayIngredient(arr){
         $(".row").removeClass("d-none")
         $(".search-input").removeClass("d-flex").addClass("d-none")
         let cartoona=``
@@ -323,6 +330,7 @@ $(".close-icon").click(function(){
 
 
      function displaySearch (){
+        $(".row").addClass("d-none")
         $(".search-input").removeClass("d-none").addClass("d-flex")
         $(".search-input .inputName").keyup(function(){
          term=this.value
@@ -435,7 +443,7 @@ $(".close-icon").click(function(){
       
       </div>
       <div class="col-md-3 mx-auto ">
-      <button class="btn btn-outline-danger  mt-3">submit</button>
+      <button class="btn btn-outline-danger submit-btn mt-3" disabled="disabled">submit</button>
       </div>
       
         
@@ -524,12 +532,15 @@ $(".close-icon").click(function(){
             }
         })
 
-        
-   
-
-
-    
+    $("input").keyup(function(){
+        if(validateName()==true && validateAge()==true && validateEmail()==true && validateNumber()==true && validatePassword()==true && (inputpassword.value)==(inputRePassword.value)){
+            $(".submit-btn").prop("disabled",false)
+        }
+    })
        }
+
+
+
 
        function validateName(){
         var regex=/^[a-zA-Z]{1,10}$/
@@ -555,6 +566,7 @@ $(".close-icon").click(function(){
      
 
        $("#Contact").click(function(){
+        $(".search-input").removeClass("d-flex").addClass("d-none")
         displayContact();
      })
 
