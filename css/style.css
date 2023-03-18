@@ -1,0 +1,100 @@
+*{
+    cursor: pointer;
+}
+
+body{
+    background-color:black;
+    position: relative;
+    min-height: 100vh;
+}
+
+
+
+.inner-loading-screen{
+    position: absolute;
+    background-color: #0D0D0D;
+    display: flex;
+    z-index: 9;
+   
+}
+
+
+
+
+
+#sideBar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    display: flex;
+    z-index: 999;
+
+}
+
+#sideBarInner{
+    background-color:black;
+}
+
+#sideBarInner li{
+    position: relative;
+    top: 100%;
+}
+
+#sideBarIcon{
+    background-color: white;
+    width: 15%;
+}
+
+
+.form-control{
+    background-color: transparent !important;
+
+}
+
+ ::placeholder{
+color: gray !important;
+}
+
+figure{
+    border-radius: 10px;
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    
+}
+
+
+.fig-content{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: 10px;
+    background-color: #f9f6f6ca;
+    padding-left: 10px;
+    transition: all 1s;
+}
+
+.fig-content h3 ,p{
+    visibility: hidden;
+    transition: all 0.2s;
+}
+
+
+
+figure:hover .fig-content{
+   top: 0;
+
+}
+
+figure:hover .fig-content h3{
+    visibility: visible;
+}
+
+figure:hover .fig-content p{
+    visibility: visible;
+}
+
+
