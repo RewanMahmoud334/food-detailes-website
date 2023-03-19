@@ -1,11 +1,13 @@
-*{
-    cursor: pointer;
-}
+
 
 body{
     background-color:black;
     position: relative;
     min-height: 100vh;
+}
+
+input , li , i , figure{
+    cursor: pointer;
 }
 
 
