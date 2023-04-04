@@ -283,9 +283,9 @@ $(".close-icon").click(function(){
         let cartoona=``
         for(let i=0;i<arr.length;i++){
             cartoona+=`
-            <div class="col-md-3">
-            <div class="content">
-                <figure>
+            <div class="col-md-3 d-flex justify-content-center">
+            <div class="content ">
+                <figure >
                 <i class="fa-solid fa-house-laptop fa-4x text-white"></i>
                    <p class="text-white visible py-3 fs-4">${areaApi.meals[i].strArea}</p>
                 </figure>
